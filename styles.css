@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px;
+  border: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+div {
+  display: inline-block;
+}
+
+.color-boxes {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  width: 80%;
+  margin-top: 400px;
+}
+
+.saved-palettes {
+  align-content: right;
+  margin: 0px;
+  padding: 0px;
+  width: 20%;
+}
