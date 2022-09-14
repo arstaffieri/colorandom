@@ -1,15 +1,20 @@
-var hexcode = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+var hexcode = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 class Color {
-    constructor(hexcode) {
-        this.hexcode = hexcode;
+   constructor() {
+    this.locked = false;
     }
     randomizeHexcode() {
+        this.hexcode = '';
         for (var i = 0; i < 6; i++) {
-            this.hexcode += Math.floor(Math.random() * hexcode.length)
-            console.log(this.hexcode)
+            this.hexcode += hexcode[Math.floor(Math.random() * hexcode.length)];
         }
+        return this.hexcode
     }
+}
+
+class Palette {
+    
 }
 
 var color1 = new Color();
