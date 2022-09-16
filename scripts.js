@@ -6,7 +6,9 @@ var colorBox3 = document.getElementById('cb3');
 var colorBox4 = document.getElementById('cb4');
 var colorBox5 = document.getElementById('cb5');
 var colorBoxes = [colorBox1, colorBox2, colorBox3, colorBox4, colorBox5]
-var newPaletteButton = document.querySelector('button')
+var newPaletteButton = document.querySelector('.new-palette-button')
+var savePaletteButton = document.querySelector('.save-palette-button')
+
 
 
 var hexcode = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -47,9 +49,22 @@ var displayedPalette = new Palette();
 function newColorData() {
   displayedPalette.generateNewColors()
 }
+
+var savedPalettes = [displayedPalette.colors[0], displayedPalette.colors[1], displayedPalette.colors[2], displayedPalette.colors[3], displayedPalette.colors[4], displayedPalette.colors[5]]
+
 window.addEventListener('load', displayedPalette.generateNewColors());
 newPaletteButton.addEventListener('click', newColorData);
+savePaletteButton.addEventListener('click', savePalette)
 
+
+
+function savePalette() {
+  // savedPalettes = []
+  savedPalettes.push(displayedPalette)
+
+}
+
+//We need a function that will push saved palettes into a Saved Palettes Array.  We need to somehow have the data model iterate through the Saved Palettes Array to display them on the DOM. displayedPalette.color
 
 /*function lockColor() {
  if (this.locked === true) {
