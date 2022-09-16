@@ -30,8 +30,8 @@ var newHexcode = new Color();
 
 
 class Palette {
-    constructor() {
-    this.colors = []
+    constructor(savedPaletteArray) {
+    this.colors = savedPaletteArray || []
     this.paletteID = Date.now();
     }
     generateNewColors() {
@@ -50,7 +50,7 @@ function newColorData() {
   displayedPalette.generateNewColors()
 }
 
-var savedPalettes = [displayedPalette.colors[0], displayedPalette.colors[1], displayedPalette.colors[2], displayedPalette.colors[3], displayedPalette.colors[4], displayedPalette.colors[5]]
+var savedPalettes = []
 
 window.addEventListener('load', displayedPalette.generateNewColors());
 newPaletteButton.addEventListener('click', newColorData);
@@ -59,10 +59,15 @@ savePaletteButton.addEventListener('click', savePalette)
 
 
 function savePalette() {
-  // savedPalettes = []
-  savedPalettes.push(displayedPalette)
+  var paletteCopy = new Palette(displayedPalette.colors)
+  savedPalettes.push(paletteCopy)
+//   displayHTML() {
 
+//   }
 }
+
+// function displayHTML()
+
 
 //We need a function that will push saved palettes into a Saved Palettes Array.  We need to somehow have the data model iterate through the Saved Palettes Array to display them on the DOM. displayedPalette.color
 

@@ -96,6 +96,7 @@ h1 {
 }
 
 .saved-palettes {
+  display: flex;
   text-align: center;
   border-left: medium black solid;
   height: 100%;
