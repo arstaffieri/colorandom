@@ -58,31 +58,31 @@ h1 {
 .color-box-1 {
   width: 20%;
   text-align: center;
-  background-color: #24680A;
+/*  background-color: #24680A; */
 }
 
 .color-box-2 {
   width: 20%;
   text-align: center;
-  background-color: #13579B;
+/*  background-color: #13579B; */
 }
 
 .color-box-3 {
   width: 20%;
   text-align: center;
-  background-color: #ABCDEF;
+  /* background-color: #ABCDEF; */
 }
 
 .color-box-4 {
   width: 20%;
   text-align: center;
-  background-color: #098765;
+  /* background-color: #098765; */
 }
 
 .color-box-5 {
   width: 20%;
   text-align: center;
-  background-color: #111111;
+  /* background-color: #111111; */
 }
 
 .lock-section {
