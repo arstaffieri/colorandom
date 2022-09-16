@@ -41,19 +41,25 @@ class Palette {
     generateNewColors() {
         this.colors = []
         for (var i = 0; i < 5; i++) {
+            if (!newHexcode[i].locked) {
             this.colors.push(newHexcode.randomizeHexcode());
             colorBoxes[i].style.backgroundColor = this.colors[i]
+            }
         } 
+    }
  //       document.getElementById('cb1').style.backgroundColor = this.colors[0];
   //  return this.displayNewColors
-    } 
-}
+} 
+
+/*function lockColor() {
+ if (this.locked === true) {
+    //return locked image
+ } else if (this.locked === false) {
+    //return unlocked image
+ }
+} */
 
 
-var palette1 = new Palette();
-var palette2 = new Palette();
-var palette3 = new Palette();
-var palette4 = new Palette();
 
 
 /*Note: on page load, a new instance of Palette will be declared. This Palette will be used until a user decides to save that Palette. Then, a new instance will be created and used until that palette is saved. Continue ad infinitum.
