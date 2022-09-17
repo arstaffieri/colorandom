@@ -95,12 +95,30 @@ h1 {
   font-size: 20px;
 }
 
-.saved-palettes {
+.saved-palettes-display {
+  flex-direction: column;
   display: flex;
   text-align: center;
   border-left: medium black solid;
   height: 100%;
+  width: 100%
   font-size: 30px;
+}
+
+.palettes-display {
+  flex-direction: row;
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: 10px black solid;
+}
+ul {
+  display: flex;
+  border: 2px black solid;
+  width: 5%;
+  height: 5%;
+  justify-content: space-evenly;
 }
 
 .buttons-section {
