@@ -64,9 +64,11 @@ class Palette {
         this.colors = []
         for (var i = 0; i < 5; i++) {
             // if (!newHexcode[i].locked) {
-            this.colors.push(newHexcode.randomizeHexcode());
-            hexcodeArray[i].innerText = this.colors[i]
-            colorBoxes[i].style.backgroundColor = this.colors[i]
+            var colorCopy = new Color()
+            colorCopy.hexcode = newHexcode.randomizeHexcode();
+            this.colors.push(colorCopy);
+            hexcodeArray[i].innerText = this.colors[i].hexcode;
+            colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
             // }
         }
     }
@@ -96,7 +98,7 @@ function displayHTML() {
     for(var i = 0; i < savedPalettes.length; i++) {
       savedPalettesSection[i].innerHTML = '';
         for(var j = 0; j < savedPalettes[i].colors.length; j++) {
-          savedPalettesSection[i].innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul>`
+          savedPalettesSection[i].innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j].hexcode}"></ul>`
         }
     savedPalettesSection[i].innerHTML += '<btn class="trash-button"><img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-trash-essentials-prettycons-solid-prettycons.png"></btn>'
     }
@@ -114,13 +116,21 @@ function displayHTML() {
 //   color should change after new palette
 
 function lockColor(event) {
+  console.log(event.target)
     for (var i = 0; i < lockArray.length; i++) {
         if (event.target === colorBoxes[i]) {
-            if (lockArray[i].innerHTML.includes("https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png")) {
-                lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-unlock-essentials-prettycons-solid-prettycons.png">`
-            } else {
-                lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png">`
-            }
+          if (displayedPalette.colors[i].locked === true) {
+            displayedPalette.colors[i].locked = false;
+            lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-unlock-essentials-prettycons-solid-prettycons.png">`;
+          }  else {
+            displayedPalette.colors[i].locked = true;
+            lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png">`
+          }
+            // if (lockArray[i].innerHTML.includes("https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png")) {
+            //     lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-unlock-essentials-prettycons-solid-prettycons.png">`
+            // } else {
+            //     lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png">`
+            // }
         }
     }
 }
