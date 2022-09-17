@@ -106,18 +106,24 @@ h1 {
 }
 
 .palettes-display {
-  flex-direction: row;
   display: flex;
+  flex-direction: column;
   text-align: center;
   width: 100%;
   height: 100%;
   border: 10px black solid;
 }
+
+.saved-palette {
+  display: flex;
+  margin-bottom: 15px;
+}
+
 ul {
   display: flex;
   border: 2px black solid;
   width: 5%;
-  height: 5%;
+  height: 100%;
   justify-content: space-evenly;
 
 }

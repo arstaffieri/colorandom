@@ -9,8 +9,22 @@ var colorBoxes = [colorBox1, colorBox2, colorBox3, colorBox4, colorBox5]
 var newPaletteButton = document.querySelector('.new-palette-button')
 var savePaletteButton = document.querySelector('.save-palette-button')
 var palettesDisplay = document.querySelector('.palettes-display')
-
-
+var palette1 = document.querySelector('#palette1')
+var palette2 = document.querySelector('#palette2')
+var palette3 = document.querySelector('#palette3')
+var palette4 = document.querySelector('#palette4')
+var palette5 = document.querySelector('#palette5')
+var palette6 = document.querySelector('#palette6')
+var palette7 = document.querySelector('#palette7')
+var palette8 = document.querySelector('#palette8')
+var palette9 = document.querySelector('#palette9')
+var palette10 = document.querySelector('#palette10')
+var palette11 = document.querySelector('#palette11')
+var palette12 = document.querySelector('#palette12')
+var palette13 = document.querySelector('#palette13')
+var palette14 = document.querySelector('#palette14')
+var palette15 = document.querySelector('#palette15')
+var savedPalettesSection = [palette1, palette2, palette3, palette4, palette5, palette6, palette7, palette8, palette9, palette10, palette11, palette12, palette13, palette14, palette15]
 
 var hexcode = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -62,15 +76,15 @@ savePaletteButton.addEventListener('click', savePalette)
 function savePalette() {
   var paletteCopy = new Palette(displayedPalette.colors)
   savedPalettes.push(paletteCopy)
-  displayHTML() 
+  displayHTML()
 }
 
 
 function displayHTML() {
-    palettesDisplay.innerHTML = ""
     for(var i = 0; i < savedPalettes.length; i++) {
+      savedPalettesSection[i].innerHTML = '';
         for(var j = 0; j < savedPalettes[i].colors.length; j++) {
-            palettesDisplay.innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul>`
+          savedPalettesSection[i].innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul>`
         }
     }
 
