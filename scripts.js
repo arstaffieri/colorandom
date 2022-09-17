@@ -1,36 +1,41 @@
-
-
 var colorBox1 = document.getElementById('cb1');
 var colorBox2 = document.getElementById('cb2');
 var colorBox3 = document.getElementById('cb3');
 var colorBox4 = document.getElementById('cb4');
 var colorBox5 = document.getElementById('cb5');
-var colorBoxes = [colorBox1, colorBox2, colorBox3, colorBox4, colorBox5]
-var hexcode1 = document.querySelector('#hexcode1')
-var hexcode2 = document.querySelector('#hexcode2')
-var hexcode3 = document.querySelector('#hexcode3')
-var hexcode4 = document.querySelector('#hexcode4')
-var hexcode5 = document.querySelector('#hexcode5')
-var hexcodeArray = [hexcode1, hexcode2, hexcode3, hexcode4, hexcode5]
-var newPaletteButton = document.querySelector('.new-palette-button')
-var savePaletteButton = document.querySelector('.save-palette-button')
-var palettesDisplay = document.querySelector('.palettes-display')
-var palette1 = document.querySelector('#palette1')
-var palette2 = document.querySelector('#palette2')
-var palette3 = document.querySelector('#palette3')
-var palette4 = document.querySelector('#palette4')
-var palette5 = document.querySelector('#palette5')
-var palette6 = document.querySelector('#palette6')
-var palette7 = document.querySelector('#palette7')
-var palette8 = document.querySelector('#palette8')
-var palette9 = document.querySelector('#palette9')
-var palette10 = document.querySelector('#palette10')
-var palette11 = document.querySelector('#palette11')
-var palette12 = document.querySelector('#palette12')
-var palette13 = document.querySelector('#palette13')
-var palette14 = document.querySelector('#palette14')
-var palette15 = document.querySelector('#palette15')
-var savedPalettesSection = [palette1, palette2, palette3, palette4, palette5, palette6, palette7, palette8, palette9, palette10, palette11, palette12, palette13, palette14, palette15]
+var colorBoxSection = document.querySelector('.color-box-section');
+var colorBoxes = [colorBox1, colorBox2, colorBox3, colorBox4, colorBox5];
+var hexcode1 = document.querySelector('#hexcode1');
+var hexcode2 = document.querySelector('#hexcode2');
+var hexcode3 = document.querySelector('#hexcode3');
+var hexcode4 = document.querySelector('#hexcode4');
+var hexcode5 = document.querySelector('#hexcode5');
+var hexcodeArray = [hexcode1, hexcode2, hexcode3, hexcode4, hexcode5];
+var lock1 = document.getElementById('lock1');
+var lock2 = document.getElementById('lock2');
+var lock3 = document.getElementById('lock3');
+var lock4 = document.getElementById('lock4');
+var lock5 = document.getElementById('lock5');
+var lockArray = [lock1, lock2, lock3, lock4, lock5];
+var newPaletteButton = document.querySelector('.new-palette-button');
+var savePaletteButton = document.querySelector('.save-palette-button');
+var palettesDisplay = document.querySelector('.palettes-display');
+var palette1 = document.querySelector('#palette1');
+var palette2 = document.querySelector('#palette2');
+var palette3 = document.querySelector('#palette3');
+var palette4 = document.querySelector('#palette4');
+var palette5 = document.querySelector('#palette5');
+var palette6 = document.querySelector('#palette6');
+var palette7 = document.querySelector('#palette7');
+var palette8 = document.querySelector('#palette8');
+var palette9 = document.querySelector('#palette9');
+var palette10 = document.querySelector('#palette10');
+var palette11 = document.querySelector('#palette11');
+var palette12 = document.querySelector('#palette12');
+var palette13 = document.querySelector('#palette13');
+var palette14 = document.querySelector('#palette14');
+var palette15 = document.querySelector('#palette15');
+var savedPalettesSection = [palette1, palette2, palette3, palette4, palette5, palette6, palette7, palette8, palette9, palette10, palette11, palette12, palette13, palette14, palette15];
 
 var hexcode = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -76,7 +81,8 @@ var savedPalettes = []
 
 window.addEventListener('load', displayedPalette.generateNewColors());
 newPaletteButton.addEventListener('click', newColorData);
-savePaletteButton.addEventListener('click', savePalette)
+savePaletteButton.addEventListener('click', savePalette);
+colorBoxSection.addEventListener('click', lockColor);
 
 // var displaySavedHTML = []
 
@@ -100,10 +106,29 @@ function displayHTML() {
 
 //We need a function that will push saved palettes into a Saved Palettes Array.  We need to somehow have the data model iterate through the Saved Palettes Array to display them on the DOM. displayedPalette.color
 
-/*function lockColor() {
- if (this.locked === true) {
+//change the unclocked image icons to locked image icons when color is clicked
+//assign the value of a color from this.locked = false to this.locked = true
+//if this.locked = true for a color
+//   color should remain even after new palette and saved palette is clicked
+//if this.locked = false for a color
+//   color should change after new palette
+
+function lockColor(event) {
+    for (var i = 0; i < lockArray.length; i++) {
+        if (event.target === colorBoxes[i]) {
+            if (lockArray[i].innerHTML.includes("https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png")) {
+                lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-unlock-essentials-prettycons-solid-prettycons.png">`
+            } else {
+                lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png">`
+            }
+        }
+    }
+}
+
+/* if (this.locked === true) {
     //return locked image
  } else if (this.locked === false) {
     //return unlocked image
- }
-} */
+ }*/
+
+ //    console.log(event.target)
