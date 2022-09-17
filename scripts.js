@@ -8,6 +8,7 @@ var colorBox5 = document.getElementById('cb5');
 var colorBoxes = [colorBox1, colorBox2, colorBox3, colorBox4, colorBox5]
 var newPaletteButton = document.querySelector('.new-palette-button')
 var savePaletteButton = document.querySelector('.save-palette-button')
+var palettesDisplay = document.querySelector('.palettes-display')
 
 
 
@@ -30,8 +31,8 @@ var newHexcode = new Color();
 
 
 class Palette {
-    constructor() {
-    this.colors = []
+    constructor(savedPaletteArray) {
+    this.colors = savedPaletteArray || []
     this.paletteID = Date.now();
     }
     generateNewColors() {
@@ -50,19 +51,31 @@ function newColorData() {
   displayedPalette.generateNewColors()
 }
 
-var savedPalettes = [displayedPalette.colors[0], displayedPalette.colors[1], displayedPalette.colors[2], displayedPalette.colors[3], displayedPalette.colors[4], displayedPalette.colors[5]]
+var savedPalettes = []
 
 window.addEventListener('load', displayedPalette.generateNewColors());
 newPaletteButton.addEventListener('click', newColorData);
 savePaletteButton.addEventListener('click', savePalette)
 
-
+// var displaySavedHTML = []
 
 function savePalette() {
-  // savedPalettes = []
-  savedPalettes.push(displayedPalette)
+  var paletteCopy = new Palette(displayedPalette.colors)
+  savedPalettes.push(paletteCopy)
+  displayHTML() 
+}
+
+
+function displayHTML() {
+    palettesDisplay.innerHTML = ""
+    for(var i = 0; i < savedPalettes.length; i++) {
+        for(var j = 0; j < savedPalettes[i].colors.length; j++) {
+            palettesDisplay.innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul>`
+        }
+    }
 
 }
+
 
 //We need a function that will push saved palettes into a Saved Palettes Array.  We need to somehow have the data model iterate through the Saved Palettes Array to display them on the DOM. displayedPalette.color
 
