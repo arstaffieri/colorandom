@@ -6,6 +6,12 @@ var colorBox3 = document.getElementById('cb3');
 var colorBox4 = document.getElementById('cb4');
 var colorBox5 = document.getElementById('cb5');
 var colorBoxes = [colorBox1, colorBox2, colorBox3, colorBox4, colorBox5]
+var hexcode1 = document.querySelector('#hexcode1')
+var hexcode2 = document.querySelector('#hexcode2')
+var hexcode3 = document.querySelector('#hexcode3')
+var hexcode4 = document.querySelector('#hexcode4')
+var hexcode5 = document.querySelector('#hexcode5')
+var hexcodeArray = [hexcode1, hexcode2, hexcode3, hexcode4, hexcode5]
 var newPaletteButton = document.querySelector('.new-palette-button')
 var savePaletteButton = document.querySelector('.save-palette-button')
 var palettesDisplay = document.querySelector('.palettes-display')
@@ -54,6 +60,7 @@ class Palette {
         for (var i = 0; i < 5; i++) {
             // if (!newHexcode[i].locked) {
             this.colors.push(newHexcode.randomizeHexcode());
+            hexcodeArray[i].innerText = this.colors[i]
             colorBoxes[i].style.backgroundColor = this.colors[i]
             // }
         }
@@ -79,16 +86,15 @@ function savePalette() {
   displayHTML()
 }
 
-//<btn>🗑️</btn>
 function displayHTML() {
     for(var i = 0; i < savedPalettes.length; i++) {
       savedPalettesSection[i].innerHTML = '';
         for(var j = 0; j < savedPalettes[i].colors.length; j++) {
           savedPalettesSection[i].innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul>`
         }
-    savedPalettesSection[i].innerHTML += '<btn class="trash-button">🗑️</btn>'
+    savedPalettesSection[i].innerHTML += '<btn class="trash-button"><img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-trash-essentials-prettycons-solid-prettycons.png"></btn>'
     }
-
+    newColorData();
 }
 
 
