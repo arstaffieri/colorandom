@@ -65,13 +65,12 @@ function savePalette() {
   displayHTML() 
 }
 
+
 function displayHTML() {
     palettesDisplay.innerHTML = ""
-    // palettesDisplay.innerHTML += `<ul class = "color-box-1" id = "cb1" style="background-color: ${savedPalettes[0].colors[0]}"></ul>`
-    // palettesDisplay.innerHTML += `<ul class = "color-box-2" id = "cb2" style="background-color: ${savedPalettes[0].colors[0]}"></ul>`
     for(var i = 0; i < savedPalettes.length; i++) {
         for(var j = 0; j < savedPalettes[i].colors.length; j++) {
-            palettesDisplay.innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul><br>`
+            palettesDisplay.innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul>`
         }
     }
 
