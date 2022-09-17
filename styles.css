@@ -85,6 +85,16 @@ h1 {
   /* background-color: #111111; */
 }
 
+.hex-lock {
+  display: flex;
+  align-items: center;
+}
+
+img {
+  height: 25px;
+  width: 25px;
+}
+
 .lock-section {
   display: flex;
   justify-content: space-around;
@@ -106,18 +116,29 @@ h1 {
 }
 
 .palettes-display {
-  flex-direction: row;
   display: flex;
+  flex-direction: column;
   text-align: center;
   width: 100%;
   height: 100%;
-  border: 10px black solid;
+  padding: 15px;
 }
+
+.saved-palette {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.trash-button {
+  padding: 15px;
+}
+
 ul {
   display: flex;
-  border: 2px black solid;
   width: 5%;
-  height: 5%;
+  height: 100%;
   justify-content: space-evenly;
 
 }
