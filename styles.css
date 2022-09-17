@@ -111,17 +111,22 @@ h1 {
   text-align: center;
   width: 100%;
   height: 100%;
-  border: 10px black solid;
+  padding: 15px;
 }
 
 .saved-palette {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 15px;
+}
+
+.trash-button {
+  padding: 15px;
 }
 
 ul {
   display: flex;
-  border: 2px black solid;
   width: 5%;
   height: 100%;
   justify-content: space-evenly;

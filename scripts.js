@@ -79,13 +79,14 @@ function savePalette() {
   displayHTML()
 }
 
-
+//<btn>🗑️</btn>
 function displayHTML() {
     for(var i = 0; i < savedPalettes.length; i++) {
       savedPalettesSection[i].innerHTML = '';
         for(var j = 0; j < savedPalettes[i].colors.length; j++) {
           savedPalettesSection[i].innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j]}"></ul>`
         }
+    savedPalettesSection[i].innerHTML += '<btn class="trash-button">🗑️</btn>'
     }
 
 }
