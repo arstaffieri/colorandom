@@ -60,18 +60,39 @@ class Palette {
     this.colors = savedPaletteArray || []
     this.paletteID = Date.now();
     }
+    // displayColorOnLoad() {
+    //     this.colors = []
+    //     for (var i = 0; i < 5; i++) {
+    //         var colorCopy = new Color()
+    //         colorCopy.hexcode = newHexcode.randomizeHexcode();
+    //         this.colors.push(colorCopy);
+    //         hexcodeArray[i].innerText = this.colors[i].hexcode;
+    //         colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
+    //     }
+    // }
     generateNewColors() {
+        var oldArray = this.colors 
         this.colors = []
         for (var i = 0; i < 5; i++) {
-            // if (!newHexcode[i].locked) {
+            if (oldArray.length == 0) {
+                var colorCopy = new Color()
+            colorCopy.hexcode = newHexcode.randomizeHexcode();
+            this.colors.push(colorCopy);
+            hexcodeArray[i].innerText = this.colors[i].hexcode;
+            colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
+            } else {
+            if (oldArray[i].locked == true) {
+                this.colors.push(oldArray[i]);
+            } else {
             var colorCopy = new Color()
             colorCopy.hexcode = newHexcode.randomizeHexcode();
             this.colors.push(colorCopy);
             hexcodeArray[i].innerText = this.colors[i].hexcode;
             colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
-            // }
+            }
         }
     }
+}
 };
 
 var displayedPalette = new Palette();
@@ -80,20 +101,22 @@ function newColorData() {
 }
 
 var savedPalettes = []
-
-window.addEventListener('load', displayedPalette.generateNewColors());
+function loadPalette() {
+    displayedPalette.generateNewColors()
+}
+window.addEventListener('load', loadPalette);
+// window.addEventListener('load', displayedPalette.displayColorOnLoad());
 newPaletteButton.addEventListener('click', newColorData);
 savePaletteButton.addEventListener('click', savePalette);
 colorBoxSection.addEventListener('click', lockColor);
 
-// var displaySavedHTML = []
 
 function savePalette() {
   var paletteCopy = new Palette(displayedPalette.colors)
   savedPalettes.push(paletteCopy)
   displayHTML()
 }
-
+// this is the saved palette display area
 function displayHTML() {
     for(var i = 0; i < savedPalettes.length; i++) {
       savedPalettesSection[i].innerHTML = '';
@@ -106,15 +129,6 @@ function displayHTML() {
 }
 
 
-//We need a function that will push saved palettes into a Saved Palettes Array.  We need to somehow have the data model iterate through the Saved Palettes Array to display them on the DOM. displayedPalette.color
-
-//change the unclocked image icons to locked image icons when color is clicked
-//assign the value of a color from this.locked = false to this.locked = true
-//if this.locked = true for a color
-//   color should remain even after new palette and saved palette is clicked
-//if this.locked = false for a color
-//   color should change after new palette
-
 function lockColor(event) {
   console.log(event.target)
     for (var i = 0; i < lockArray.length; i++) {
@@ -126,13 +140,9 @@ function lockColor(event) {
             displayedPalette.colors[i].locked = true;
             lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png">`
           }
-            // if (lockArray[i].innerHTML.includes("https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png")) {
-            //     lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-unlock-essentials-prettycons-solid-prettycons.png">`
-            // } else {
-            //     lockArray[i].innerHTML = `<img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-padlock-essentials-prettycons-solid-prettycons.png">`
-            // }
         }
     }
+
 }
 
 /* if (this.locked === true) {
