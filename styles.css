@@ -28,7 +28,7 @@ article {
     display: flex;
     align-items: center;
     justify-content: space-around;
-  }
+}
 
 .main-section {
   display: flex;
@@ -38,11 +38,36 @@ article {
 }
 
 h1 {
-  align-self: center;
-  margin-bottom: 50px;
-  font-size: 75px;
-}
-
+    display: flex;
+    align-items: center;
+    font-size: 10vw;
+    width: 80vw;
+    background: linear-gradient(
+      60deg,
+      hsl(0, 75%, 50%) 10%,
+      hsl(20, 75%, 50%) 10%,
+      hsl(20, 75%, 50%) 25%,
+      hsl(50, 75%, 50%) 25%,
+      hsl(50, 75%, 50%) 40%,
+      hsl(130, 75%, 50%) 40%,
+      hsl(130, 75%, 50%) 55%,
+      hsl(200, 75%, 50%) 55%,
+      hsl(200, 75%, 50%) 70%,
+      hsl(260, 75%, 50%) 70%,
+      hsl(260, 75%, 50%) 85%,
+      hsl(0, 75%, 50%) 85%
+    );
+    text-shadow: 0.5px -0.6vw #fff4;
+    color: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+       animation: 10s Rainbow linear infinite,
+       3s Always ease alternate infinite;
+  }
+  @keyframes Rainbow {
+    100% { background-position: 100vw 0px; }
+  }
+  
 
 .color-box-section {
   display: flex;
@@ -58,31 +83,26 @@ h1 {
 .color-box-1 {
   width: 20%;
   text-align: center;
-/*  background-color: #24680A; */
 }
 
 .color-box-2 {
   width: 20%;
   text-align: center;
-/*  background-color: #13579B; */
 }
 
 .color-box-3 {
   width: 20%;
   text-align: center;
-  /* background-color: #ABCDEF; */
 }
 
 .color-box-4 {
   width: 20%;
   text-align: center;
-  /* background-color: #098765; */
 }
 
 .color-box-5 {
   width: 20%;
   text-align: center;
-  /* background-color: #111111; */
 }
 
 .hex-lock {
