@@ -48,45 +48,35 @@ class Color {
 
 var newHexcode = new Color();
 
-
 class Palette {
     constructor(savedPaletteArray) {
     this.colors = savedPaletteArray || []
     this.paletteID = Date.now();
     }
-    // displayColorOnLoad() {
-    //     this.colors = []
-    //     for (var i = 0; i < 5; i++) {
-    //         var colorCopy = new Color()
-    //         colorCopy.hexcode = newHexcode.randomizeHexcode();
-    //         this.colors.push(colorCopy);
-    //         hexcodeArray[i].innerText = this.colors[i].hexcode;
-    //         colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
-    //     }
-    // }
+
     generateNewColors() {
         var oldArray = this.colors
         this.colors = []
         for (var i = 0; i < 5; i++) {
             if (oldArray.length == 0) {
                 var colorCopy = new Color()
-            colorCopy.hexcode = newHexcode.randomizeHexcode();
-            this.colors.push(colorCopy);
-            hexcodeArray[i].innerText = this.colors[i].hexcode;
-            colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
+                colorCopy.hexcode = newHexcode.randomizeHexcode();
+                this.colors.push(colorCopy);
+                hexcodeArray[i].innerText = this.colors[i].hexcode;
+                colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
             } else {
             if (oldArray[i].locked == true) {
                 this.colors.push(oldArray[i]);
             } else {
-            var colorCopy = new Color()
-            colorCopy.hexcode = newHexcode.randomizeHexcode();
-            this.colors.push(colorCopy);
-            hexcodeArray[i].innerText = this.colors[i].hexcode;
-            colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
+                var colorCopy = new Color()
+                colorCopy.hexcode = newHexcode.randomizeHexcode();
+                this.colors.push(colorCopy);
+                hexcodeArray[i].innerText = this.colors[i].hexcode;
+                colorBoxes[i].style.backgroundColor = this.colors[i].hexcode;
             }
         }
     }
-}
+  }
 };
 
 var displayedPalette = new Palette();
@@ -96,17 +86,10 @@ function newColorData() {
 
 var savedPalettes = []
 function loadPalette() {
-    displayedPalette.generateNewColors()
+  displayedPalette.generateNewColors()
 }
 
-function deletePalette(event) {
-  if(event.target.classList.contains('trash-button')) {
-    console.log("Hello")
-
-  }
-}
 window.addEventListener('load', loadPalette);
-// window.addEventListener('load', displayedPalette.displayColorOnLoad());
 newPaletteButton.addEventListener('click', newColorData);
 savePaletteButton.addEventListener('click', savePalette);
 colorBoxSection.addEventListener('click', lockColor);
@@ -117,18 +100,16 @@ function deletePalette(event) {
     if (savedPalettesSection[i] === event.target.closest('div div')) {
       savedPalettes.splice(i, 1);
       displayHTML();
-      console.log(savedPalettes)
     }
   }
 }
-
 
 function savePalette() {
   var paletteCopy = new Palette(displayedPalette.colors)
   savedPalettes.push(paletteCopy)
   displayHTML()
 }
-// this is the saved palette display area
+
 function displayHTML() {
     for(var i = 0; i < savedPalettesSection.length; i++) {
       savedPalettesSection[i].innerHTML = '';
@@ -137,15 +118,13 @@ function displayHTML() {
       }
         for(var j = 0; j < savedPalettes[i].colors.length; j++) {
           savedPalettesSection[i].innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j].hexcode}"></ul>`
-        }
-    savedPalettesSection[i].innerHTML += '<btn class="trash-button"><img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-trash-essentials-prettycons-solid-prettycons.png"></btn>'
+      }
+          savedPalettesSection[i].innerHTML += '<btn class="trash-button"><img src="https://img.icons8.com/external-prettycons-solid-prettycons/200/external-trash-essentials-prettycons-solid-prettycons.png"></btn>'
     }
     newColorData();
 }
 
-
 function lockColor(event) {
-  console.log(event.target)
     for (var i = 0; i < lockArray.length; i++) {
         if (event.target === colorBoxes[i]) {
           if (displayedPalette.colors[i].locked === true) {
@@ -157,13 +136,4 @@ function lockColor(event) {
           }
         }
     }
-
 }
-
-/* if (this.locked === true) {
-    //return locked image
- } else if (this.locked === false) {
-    //return unlocked image
- }*/
-
- //    console.log(event.target)
