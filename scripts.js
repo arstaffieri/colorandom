@@ -28,14 +28,8 @@ var palette5 = document.querySelector('#palette5');
 var palette6 = document.querySelector('#palette6');
 var palette7 = document.querySelector('#palette7');
 var palette8 = document.querySelector('#palette8');
-var palette9 = document.querySelector('#palette9');
-var palette10 = document.querySelector('#palette10');
-var palette11 = document.querySelector('#palette11');
-var palette12 = document.querySelector('#palette12');
-var palette13 = document.querySelector('#palette13');
-var palette14 = document.querySelector('#palette14');
-var palette15 = document.querySelector('#palette15');
-var savedPalettesSection = [palette1, palette2, palette3, palette4, palette5, palette6, palette7, palette8, palette9, palette10, palette11, palette12, palette13, palette14, palette15];
+var savedPalettesSection = [palette1, palette2, palette3, palette4, palette5, palette6, palette7, palette8];
+
 
 var hexcode = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -71,7 +65,7 @@ class Palette {
     //     }
     // }
     generateNewColors() {
-        var oldArray = this.colors 
+        var oldArray = this.colors
         this.colors = []
         for (var i = 0; i < 5; i++) {
             if (oldArray.length == 0) {
@@ -104,11 +98,29 @@ var savedPalettes = []
 function loadPalette() {
     displayedPalette.generateNewColors()
 }
+
+function deletePalette(event) {
+  if(event.target.classList.contains('trash-button')) {
+    console.log("Hello")
+
+  }
+}
 window.addEventListener('load', loadPalette);
 // window.addEventListener('load', displayedPalette.displayColorOnLoad());
 newPaletteButton.addEventListener('click', newColorData);
 savePaletteButton.addEventListener('click', savePalette);
 colorBoxSection.addEventListener('click', lockColor);
+palettesDisplay.addEventListener('click', deletePalette);
+
+function deletePalette(event) {
+  for (var i = 0; i < savedPalettesSection.length; i++) {
+    if (savedPalettesSection[i] === event.target.closest('div div')) {
+      savedPalettes.splice(i, 1);
+      displayHTML();
+      console.log(savedPalettes)
+    }
+  }
+}
 
 
 function savePalette() {
@@ -118,8 +130,11 @@ function savePalette() {
 }
 // this is the saved palette display area
 function displayHTML() {
-    for(var i = 0; i < savedPalettes.length; i++) {
+    for(var i = 0; i < savedPalettesSection.length; i++) {
       savedPalettesSection[i].innerHTML = '';
+      if (savedPalettes[i] === undefined) {
+        return newColorData();
+      }
         for(var j = 0; j < savedPalettes[i].colors.length; j++) {
           savedPalettesSection[i].innerHTML += `<ul style="background-color: ${savedPalettes[i].colors[j].hexcode}"></ul>`
         }
